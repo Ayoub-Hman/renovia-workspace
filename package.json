@@ -1,0 +1,29 @@
+{
+  "name": "renovia-workplace",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000r\u0000e\u0000n\u0000o\u0000v\u0000i\u0000a\u0000-\u0000w\u0000o\u0000r\u0000k\u0000s\u0000p\u0000a\u0000c\u0000e\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ayoub-Hman/renovia-workspace.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Ayoub-Hman/renovia-workspace/issues"
+  },
+  "homepage": "https://github.com/Ayoub-Hman/renovia-workspace#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "sqlite3": "^5.1.7"
+  }
+}
