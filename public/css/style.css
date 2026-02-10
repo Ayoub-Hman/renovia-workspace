@@ -261,3 +261,185 @@ textarea{min-height: 110px; resize: vertical}
 .modalClose:hover{
   opacity: 1;
 }
+
+
+/* ==========================================
+   RÉNOVIA | Workspace layout plein écran (EPIC 1)
+   ========================================== */
+
+.app{
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 18px;
+  padding: 18px;
+}
+
+.app__sidebar{
+  position: sticky;
+  top: 18px;
+  height: calc(100vh - 36px);
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar__brand{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.sidebar__logo{
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.sidebar__badge{
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.sidebar__nav{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 0;
+  flex: 1;
+  overflow: auto;
+}
+
+.nav__item{
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  color: inherit;
+  border-radius: 14px;
+  padding: 12px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.nav__item:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.16);
+}
+
+.nav__item.is-active{
+  background: linear-gradient(135deg, rgba(30,111,227,0.25) 0%, rgba(31,191,143,0.18) 100%);
+  border-color: rgba(255,255,255,0.22);
+}
+
+.nav__dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.35);
+}
+
+.nav__item.is-active .nav__dot{
+  background: rgba(255,255,255,0.90);
+}
+
+.sidebar__footer{
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+
+.sidebar__hint{
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.app__main{
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.app__header{
+  border-radius: 18px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.header__title{
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.header__sub{
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.header__right{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__pill{
+  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app__content{
+  min-height: calc(100vh - 36px - 14px - 72px);
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(8px);
+}
+
+/* Grille simple pour dashboard */
+.grid2{
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 14px;
+}
+
+@media (max-width: 980px){
+  .app{
+    grid-template-columns: 1fr;
+  }
+  .app__sidebar{
+    position: relative;
+    height: auto;
+  }
+  .grid2{
+    grid-template-columns: 1fr;
+  }
+}

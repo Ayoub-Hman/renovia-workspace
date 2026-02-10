@@ -1,71 +1,80 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RÉNOVIA | Workspace</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
+
 <body>
+  <!-- Background global (même logique que tes pages actuelles) -->
   <div class="bg"></div>
 
-  <div class="container">
-    <div class="topbar">
-      <div class="brand">
-        <div>RÉNOVIA</div>
-        <div class="badge">Workspace</div>
+  <!-- Layout app plein écran -->
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="app__sidebar" aria-label="Navigation principale">
+      <div class="sidebar__brand">
+        <div class="sidebar__logo">RÉNOVIA</div>
+        <div class="sidebar__badge">Workspace POC</div>
       </div>
 
-      <div class="actions" style="margin:0">
-        <div class="small" id="userBadge"></div>
-        <button class="btn btnGhost" id="btnLogout">Déconnexion</button>
+      <nav class="sidebar__nav">
+        <!-- Chaque bouton pointe vers une "vue" (route front) -->
+        <button class="nav__item is-active" data-view="dashboard" type="button">
+          <span class="nav__dot"></span>
+          <span>Tableau de bord</span>
+        </button>
+
+        <button class="nav__item" data-view="projects" type="button">
+          <span class="nav__dot"></span>
+          <span>Dossiers chantier</span>
+        </button>
+
+        <button class="nav__item" data-view="chat" type="button">
+          <span class="nav__dot"></span>
+          <span>Conversations</span>
+        </button>
+
+        <button class="nav__item" data-view="calendar" type="button">
+          <span class="nav__dot"></span>
+          <span>Calendrier</span>
+        </button>
+      </nav>
+
+      <div class="sidebar__footer">
+        <div class="sidebar__hint">Astuce : tout se charge sans recharger la page.</div>
       </div>
-    </div>
+    </aside>
 
-    <div class="grid">
-      <div class="card">
-        <div class="h1">Nouvelle conversation</div>
-        <p class="p">Choisis un agent, crée une conversation, puis envoie ton message.</p>
-
-        <label>Agent</label>
-        <select id="agentType">
-          <option value="commercial">Agent Commercial</option>
-          <option value="technique">Agent Technique</option>
-          <option value="administratif">Agent Administratif</option>
-        </select>
-
-        <div class="actions">
-          <button class="btn btnPrimary" id="btnCreateConv">Créer une conversation</button>
+    <!-- Main -->
+    <main class="app__main">
+      <!-- Header -->
+      <header class="app__header">
+        <div class="header__left">
+          <div class="header__title" id="viewTitle">Tableau de bord</div>
+          <div class="header__sub">Espace franchisé</div>
         </div>
 
-        <div id="convOut" class="toast" style="display:none"></div>
+        <div class="header__right">
+          <div class="header__user">
+            <div class="header__pill" id="userPill">Utilisateur</div>
+          </div>
 
-        <div class="hr"></div>
-
-        <div class="h1" style="font-size:18px">Mes conversations</div>
-        <div class="small">Clique pour charger l’historique</div>
-        <div id="convList" class="toast" style="margin-top:10px"></div>
-      </div>
-
-      <div class="card">
-        <div class="h1">Chat</div>
-        <p class="p">Conversation active : <span id="activeConv" class="small">Aucune</span></p>
-
-        <div class="chatBox" id="chatBox"></div>
-
-        <label>Message</label>
-        <textarea id="messageInput" placeholder="Écris ton message..."></textarea>
-
-        <div class="actions">
-          <button class="btn btnPrimary" id="btnSend">Envoyer</button>
-          <button class="btn" id="btnRefresh">Rafraîchir</button>
+          <button class="btn btnGhost" id="btnLogout" type="button">Déconnexion</button>
         </div>
+      </header>
 
-        <div id="msgOut" class="toast" style="display:none"></div>
-      </div>
-    </div>
+      <!-- Zone centrale dynamique -->
+      <section class="app__content" id="appContent" aria-live="polite">
+        <!-- Le contenu sera injecté par JS -->
+      </section>
+    </main>
   </div>
 
-  <script src="/js/app.js"></script>
+  <!-- On garde ton app.js si tu l’utilises pour login/register.
+       Ici on ajoute un fichier dédié au workspace, plus propre. -->
+  <script src="/js/workspace.js"></script>
 </body>
 </html>
