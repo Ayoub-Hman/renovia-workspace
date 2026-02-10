@@ -25,6 +25,36 @@ db.serialize(() => {
     )
   `);
 
+  // Table password_resets
+  // Objectif: gérer la réinitialisation de mot de passe de manière sécurisée
+  // Règles métier:
+        // - Token à usage unique (used_at non null = consommé)
+        // - Token expire après X minutes (expires_at)
+        // - On stocke un hash du token, jamais le token en clair
+  db.run(`
+    CREATE TABLE IF NOT EXISTS password_resets (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      token_hash TEXT NOT NULL,
+      expires_at DATETIME NOT NULL,
+      used_at DATETIME DEFAULT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (user_id) REFERENCES users(id)
+    )
+  `);
+
+  // Index utile pour retrouver rapidement un token
+  db.run(`
+    CREATE INDEX IF NOT EXISTS idx_password_resets_user_id
+    ON password_resets(user_id)
+  `);
+
+  db.run(`
+    CREATE INDEX IF NOT EXISTS idx_password_resets_token_hash
+    ON password_resets(token_hash)
+  `);
+
+
   // Table conversations
   db.run(`
     CREATE TABLE IF NOT EXISTS conversations (

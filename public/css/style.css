@@ -174,3 +174,90 @@ textarea{min-height: 110px; resize: vertical}
   font-size: 12px;
   color: var(--muted);
 }
+
+/* =========================
+   Password field wrapper
+   Règle UX :
+   - position relative pour placer l’œil
+   - bouton cliquable large
+========================= */
+
+.password-field {
+  position: relative;
+  width: 100%;
+}
+
+/* Champ prend toute la largeur */
+.password-field input {
+  width: 100%;
+  padding-right: 40px; /* espace pour l’œil */
+}
+
+/* Bouton œil */
+.toggle-password {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  color: #F3F6FF;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+/* Feedback hover */
+.toggle-password:hover {
+  opacity: 1;
+}
+
+
+/* =========================
+   MODAL (Mot de passe oublié)
+========================= */
+
+.modalOverlay{
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(0,0,0,.55);
+  z-index: 999;
+}
+
+.modalCard{
+  width: min(520px, 100%);
+  border-radius: 14px;
+  background: rgba(18,18,28,.98);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 20px 60px rgba(0,0,0,.45);
+  padding: 16px;
+}
+
+.modalHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.modalTitle{
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.modalClose{
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: .8;
+}
+
+.modalClose:hover{
+  opacity: 1;
+}
