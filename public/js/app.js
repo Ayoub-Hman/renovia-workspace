@@ -294,3 +294,48 @@ window.renoviaDebug = {
     console.log("Logged out");
   }
 };
+
+/**
+ * ================================
+ * RÉNOVIA — Gestion de la déconnexion
+ * ================================
+ * Règle métier POC :
+ * - La session est basée sur un JWT stocké en localStorage
+ * - Déconnexion = suppression des données de session navigateur
+ * - Puis redirection vers la page login
+ * - Aucun appel serveur nécessaire pour le POC
+ */
+
+function renoviaLogout() {
+  try {
+    // Nettoyage des données de session
+    localStorage.removeItem('renovia_token');
+    localStorage.removeItem('renovia_user');
+    localStorage.removeItem('renovia_active_conversation_id');
+
+    console.log('[Rénovia] Déconnexion OK');
+
+  } catch (e) {
+    console.warn('[Rénovia] Erreur nettoyage session', e);
+  }
+
+  // Redirection login
+  window.location.href = '/login.html';
+}
+
+
+/**
+ * Binding bouton Déconnexion
+ * Bonne pratique :
+    * - Binding après DOMContentLoaded
+    * - Vérification existence élément
+    * - Pas d’erreur si page sans bouton
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const logoutBtn = document.getElementById('btnLogout');
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', renoviaLogout);
+  }
+});
